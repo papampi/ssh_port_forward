@@ -62,7 +62,7 @@ else
 fi
 
 # Check if the public key is available on the remote host
-if ! ssh -q "$ssh_port $username@$server_ip" 'exit' >/dev/null 2>&1; then
+if ! ssh -q -p $ssh_port $username@$server_ip 'exit' >/dev/null 2>&1; then
   # Public key is not available, copy public key to remote host
   echo "Public key not found on remote host. Copying public key to remote host..."
   sshpass -p $password ssh-copy-id -p $ssh_port $username@$server_ip
